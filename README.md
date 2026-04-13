@@ -1,8 +1,7 @@
-<p align="center">
-  <img src="www/logo_RT.png" alt="RootTracker logo" width="220" />
-</p>
-
-# RootTracker
+<h1>
+  <img src="www/logo_RT.png" alt="RootTracker logo" width="54" />
+  RootTracker
+</h1>
 
 Track Growth. Analyze with Confidence.
 
