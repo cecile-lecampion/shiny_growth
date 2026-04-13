@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="www/logo_RT.png" alt="RootTracker logo" width="220" />
+</p>
+
 # RootTracker
 
 Track Growth. Analyze with Confidence.
@@ -175,6 +179,10 @@ shiny_growth/
 ├── Help.md               # Detailed user guide (accessible in the app)
 ├── README.md             # This file
 ├── LICENSE               # License information
+├── www/                  # Static assets served by Shiny (logos, favicon)
+│   ├── root-tracker-logo.svg
+│   ├── root-tracker-monogram.svg
+│   └── logo_RT.png
 └── test_data/            # Sample datasets for testing
     ├── WT_AZ0.csv
     ├── WT_AZ001.csv

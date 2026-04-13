@@ -18,6 +18,7 @@ ui <- dashboardPage(
   dashboardHeader(
     title = div(
       class = "brand",
+      tags$img(src = "logo_RT.png", alt = "RootTracker", class = "brand-logo"),
       span("RootTracker", class = "brand-title")
     ),
     titleWidth = 360
@@ -42,7 +43,20 @@ ui <- dashboardPage(
     # STRATEGY: Comprehensive custom CSS for professional appearance
     # PURPOSE: Improve visual design, user experience, and fix layout issues
     tags$head(
+      tags$link(rel = "icon", type = "image/png", href = "logo_RT.png"),
+      tags$link(rel = "alternate icon", href = "logo_RT.png"),
+      tags$meta(name = "theme-color", content = "#1E5B49"),
       tags$style(HTML("
+        :root {
+          --rt-primary: #1E5B49;
+          --rt-secondary: #2D6A4F;
+          --rt-accent: #40916C;
+          --rt-bg-soft: #F7FAF8;
+          --rt-white: #FFFFFF;
+          --rt-primary-rgb: 30, 91, 73;
+          --rt-accent-rgb: 64, 145, 108;
+        }
+
         /* ===========================================
            HEADER AND BRANDING STYLES
            =========================================== */
@@ -52,10 +66,10 @@ ui <- dashboardPage(
           display: flex !important;
           align-items: center;
           padding: 0 15px;
-          background-color: #2e7d32 !important;
+          background-color: var(--rt-primary) !important;
         }
         .main-header .navbar {
-          background-color: #2e7d32 !important;
+          background-color: var(--rt-secondary) !important;
         }
         .brand {
           display: flex;
@@ -65,12 +79,17 @@ ui <- dashboardPage(
           overflow: hidden;
           text-overflow: ellipsis;
         }
+        .brand-logo {
+          width: 26px;
+          height: 26px;
+          flex: 0 0 26px;
+        }
         .brand-title {
           font-weight: 600;
           font-size: 18px;
           line-height: 1;
           letter-spacing: 0.2px;
-          color: #fff;
+          color: var(--rt-bg-soft);
         }
         
         /* MOBILE RESPONSIVE ADJUSTMENTS */
@@ -86,18 +105,18 @@ ui <- dashboardPage(
         /* STRATEGY: Clean white background for better readability */
         /* PURPOSE: Reduce eye strain and improve content visibility */
         .content-wrapper, .right-side {
-          background-color: #ffffff;
+          background-color: var(--rt-bg-soft);
         }
         
         /* STRATEGY: Card-like design with soft green accent */
         /* PURPOSE: Clear visual separation of content blocks */
         .info-box {
-          background: white;
+          background: var(--rt-white);
           padding: 20px;
           margin: 15px 0;
           border-radius: 8px;
           box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-          border-left: 4px solid #66bb6a;
+          border-left: 4px solid var(--rt-accent);
         }
         
         /* ===========================================
@@ -106,31 +125,36 @@ ui <- dashboardPage(
         /* STRATEGY: Softer green-themed button styling */
         /* PURPOSE: Professional appearance with gentle green color scheme */
         .btn-primary {
-          background-color: #66bb6a !important;
-          border-color: #66bb6a !important;
+          background-color: var(--rt-accent) !important;
+          border-color: var(--rt-accent) !important;
+          color: #fff !important;
         }
         .btn-primary:hover {
-          background-color: #5cb85c !important;
-          border-color: #5cb85c !important;
+          background-color: var(--rt-secondary) !important;
+          border-color: var(--rt-secondary) !important;
+          color: #fff !important;
         }
         
         .btn-success {
-          background-color: #81c784 !important;
-          border-color: #81c784 !important;
+          background-color: var(--rt-secondary) !important;
+          border-color: var(--rt-secondary) !important;
+          color: #fff !important;
         }
         .btn-success:hover {
-          background-color: #66bb6a !important;
-          border-color: #66bb6a !important;
+          background-color: var(--rt-primary) !important;
+          border-color: var(--rt-primary) !important;
+          color: #fff !important;
         }
         
         .btn-warning {
-          background-color: #9ccc65 !important;
-          border-color: #9ccc65 !important;
+          background-color: var(--rt-accent) !important;
+          border-color: var(--rt-accent) !important;
           color: #fff !important;
         }
         .btn-warning:hover {
-          background-color: #8bc34a !important;
-          border-color: #8bc34a !important;
+          background-color: var(--rt-secondary) !important;
+          border-color: var(--rt-secondary) !important;
+          color: #fff !important;
         }
         
         .btn-block {
@@ -146,7 +170,7 @@ ui <- dashboardPage(
           padding: 0 !important;
         }
         .panel-heading:hover {
-          background-color: rgba(129, 199, 132, 0.1) !important;
+          background-color: rgba(var(--rt-accent-rgb), 0.08) !important;
         }
         
         .panel-heading a {
@@ -175,8 +199,8 @@ ui <- dashboardPage(
           box-shadow: 0 1px 4px rgba(0,0,0,0.1);
         }
         .alert-info {
-          background-color: #f1f8e9 !important;
-          color: #388e3c !important;
+          background-color: rgba(var(--rt-accent-rgb), 0.08) !important;
+          color: var(--rt-primary) !important;
         }
         
         /* STRATEGY: Animation for attention-grabbing alerts */
@@ -198,16 +222,16 @@ ui <- dashboardPage(
         /* STRATEGY: Soft green tab design matching color scheme */
         /* PURPOSE: Consistent visual identity throughout application */
         .nav-tabs {
-          border-bottom: 2px solid #66bb6a;
+          border-bottom: 2px solid var(--rt-accent);
         }
         .nav-tabs > li.active > a {
-          background-color: #66bb6a !important;
+          background-color: var(--rt-accent) !important;
           color: white !important;
-          border-color: #66bb6a !important;
+          border-color: var(--rt-accent) !important;
         }
         .nav-tabs > li > a:hover {
-          background-color: #f1f8e9 !important;
-          border-color: #c8e6c9 !important;
+          background-color: rgba(var(--rt-accent-rgb), 0.08) !important;
+          border-color: rgba(var(--rt-accent-rgb), 0.25) !important;
         }
         
         /* STRATEGY: Clean table design with subtle shadows */
@@ -263,8 +287,8 @@ ui <- dashboardPage(
           transition: border-color 0.3s ease;
         }
         .form-control:focus {
-          border-color: #66bb6a;
-          box-shadow: 0 0 0 0.2rem rgba(102, 187, 106, 0.25);
+          border-color: var(--rt-accent);
+          box-shadow: 0 0 0 0.2rem rgba(var(--rt-accent-rgb), 0.25);
         }
         
         /* ===========================================
@@ -290,17 +314,17 @@ ui <- dashboardPage(
         }
         
         .help-container::-webkit-scrollbar-track {
-          background: #f8f9fa; /* Light gray track */
+          background: var(--rt-bg-soft);
           border-radius: 4px;
         }
         
         .help-container::-webkit-scrollbar-thumb {
-          background: #a5d6a7;
+          background: rgba(var(--rt-accent-rgb), 0.5);
           border-radius: 4px;
         }
         
         .help-container::-webkit-scrollbar-thumb:hover {
-          background: #81c784; /* Medium green on hover */
+          background: var(--rt-accent);
         }
         
         /* ===========================================
@@ -309,8 +333,8 @@ ui <- dashboardPage(
         /* STRATEGY: Soft green-themed documentation styling */
         /* PURPOSE: Improved readability and visual hierarchy */
         .help-container h1, .help-container h2, .help-container h3 {
-          color: #388e3c; /* Softer dark green headings */
-          border-bottom: 2px solid #e8f5e8; /* Very light green underline */
+          color: var(--rt-primary);
+          border-bottom: 2px solid rgba(var(--rt-accent-rgb), 0.15);
           padding-bottom: 8px;
           margin-top: 30px;
           margin-bottom: 15px;
@@ -329,17 +353,17 @@ ui <- dashboardPage(
         /* STRATEGY: Soft green-themed code styling */
         /* PURPOSE: Clear differentiation between code and text */
         .help-container code {
-          background-color: #f8f9fa; /* Light gray background */
-          border: 1px solid #e8f5e8; /* Very light green border */
+          background-color: var(--rt-bg-soft);
+          border: 1px solid rgba(var(--rt-accent-rgb), 0.2);
           border-radius: 4px;
           padding: 2px 6px;
           font-family: 'Courier New', monospace;
-          color: #388e3c; /* Softer dark green text */
+          color: var(--rt-primary);
         }
         
         .help-container pre {
-          background-color: #f8f9fa; /* Light gray background */
-          border: 1px solid #e8f5e8; /* Very light green border */
+          background-color: var(--rt-bg-soft);
+          border: 1px solid rgba(var(--rt-accent-rgb), 0.2);
           border-radius: 4px;
           padding: 15px;
           overflow-x: auto;
@@ -362,21 +386,34 @@ ui <- dashboardPage(
            =========================================== */
         /* Panel primary styling */
         .panel-primary > .panel-heading {
-          background-color: #66bb6a !important; /* Softer green */
-          border-color: #66bb6a !important;
+          background-color: var(--rt-accent) !important;
+          border-color: var(--rt-accent) !important;
+        }
+
+        .panel-primary > .panel-heading,
+        .panel-primary > .panel-heading .panel-title,
+        .panel-primary > .panel-heading .panel-title a,
+        .panel-primary > .panel-heading .panel-title i {
+          color: #fff !important;
+        }
+
+        .panel-primary > .panel-heading a:hover,
+        .panel-primary > .panel-heading a:focus {
+          color: #fff !important;
         }
         
         /* Well styling for soft green theme */
         .well {
-          background-color: #f8f9fa !important; /* Light gray instead of green */
-          border: 1px solid #e8f5e8 !important; /* Very light green border */
+          background-color: var(--rt-bg-soft) !important;
+          border: 1px solid rgba(var(--rt-accent-rgb), 0.2) !important;
         }
         
         /* Input group styling */
         .input-group-addon {
-          background-color: #f8f9fa !important; /* Light gray */
+          background-color: var(--rt-bg-soft) !important;
           border-color: #ddd !important; /* Neutral border */
         }
+
       "))
     ),
     
@@ -432,7 +469,7 @@ ui <- dashboardPage(
                             icon("info-circle"),
                             strong(" Required File Naming Pattern:"),
                             br(), br(),
-                            tags$code("VAR1_VAR2.csv", style = "font-size: 14px; background-color: #f8f9fa; padding: 15px;"),
+                            tags$code("VAR1_VAR2.csv", style = "font-size: 14px; background-color: var(--rt-bg-soft); padding: 15px;"),
                             br(), br(),
                             em("Example: Line1_AZ0.csv")
                         ),
@@ -460,9 +497,9 @@ ui <- dashboardPage(
                         # LIVE FILENAME PREVIEW
                         # STRATEGY: Real-time feedback using reactive inputs
                         # PURPOSE: Immediate validation of user setup
-                        div(class = "well well-sm", style = "margin-top: 15px; background-color: #f0f8ff;",
+                        div(class = "well well-sm", style = "margin-top: 15px; background-color: var(--rt-bg-soft);",
                             strong("Expected filename example: "),
-                            tags$span(id = "filename_preview", style = "font-family: monospace; color: #2c3e50;",
+                          tags$span(id = "filename_preview", style = "font-family: monospace; color: var(--rt-primary);",
                                      "Line1_AZ0.csv")
                         )
                     )
@@ -494,7 +531,7 @@ ui <- dashboardPage(
                         # STRATEGY: Direct file upload for server deployment compatibility
                         # PURPOSE: Works in both local and deployed environments
                         div(
-                          style = "background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;",
+                          style = "background-color: var(--rt-bg-soft); padding: 20px; border-radius: 8px; margin-bottom: 20px;",
                           h4(icon("upload"), "Upload FluorCam Files",
                              style = "color: #495057; margin-bottom: 15px;"),
 
@@ -570,8 +607,8 @@ ui <- dashboardPage(
                         # DOSE-EFFECT ANALYSIS SETTINGS (ALWAYS VISIBLE)
                         # ===========================================
                         div(
-                          style = "background-color: #e8f5e9; padding: 15px; border-radius: 5px; border-left: 4px solid #4CAF50; margin: 15px 0;",
-                          h4(style = "margin-top: 0; color: #2e7d32;", 
+                            style = "background-color: rgba(var(--rt-accent-rgb), 0.10); padding: 15px; border-radius: 5px; border-left: 4px solid var(--rt-accent); margin: 15px 0;",
+                            h4(style = "margin-top: 0; color: var(--rt-primary);", 
                              icon("chart-line"), " Dose-Effect Analysis Settings"),
                           
                           hr(),
@@ -640,7 +677,7 @@ ui <- dashboardPage(
                           conditionalPanel(
                             condition = "input.dose_plot_type == 'barplot'",
                             div(
-                              style = "background-color: #fff3e0; padding: 15px; border-radius: 5px; margin-top: 15px; border-left: 3px solid #ff9800;",
+                              style = "background-color: rgba(var(--rt-accent-rgb), 0.10); padding: 15px; border-radius: 5px; margin-top: 15px; border-left: 3px solid var(--rt-secondary);",
                               h5(style = "margin-top: 0;", icon("bar-chart"), " Bar Plot Settings"),
                               
                               selectInput("barplot_day", "Select Day",
@@ -809,7 +846,7 @@ ui <- dashboardPage(
                     conditionalPanel(
                        condition = "output.files_uploaded",
                        div(
-                         h4("Uploaded Files:", style = "margin-bottom: 15px; color: #3c8dbc;"),
+                         h4("Uploaded Files:", style = "margin-bottom: 15px; color: var(--rt-primary);"),
                          # TOGGLE BUTTON FOR FILE LIST
                          # STRATEGY: Collapsible file list to save space
                          # PURPOSE: Optional detailed file information
