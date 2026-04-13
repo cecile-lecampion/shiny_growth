@@ -18,7 +18,7 @@ ui <- dashboardPage(
   dashboardHeader(
     title = div(
       class = "brand",
-      span("Root Growth Analysis", class = "brand-title")
+      span("RootTracker", class = "brand-title")
     ),
     titleWidth = 360
   ),

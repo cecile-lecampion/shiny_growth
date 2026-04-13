@@ -1,10 +1,10 @@
 
 
-# Root Growth Analysis Toolbox: User Guide
+# RootTracker: User Guide
 
 ## About This App
 
-The Root Growth Analysis Toolbox is a Shiny application designed to analyze root growth dose–response data. This tool lets you import CSV files, map inhibitor concentrations to numeric values, normalize growth to controls, visualize results (dose–effect curves, violin and bar plots), and run per-plot statistical tests (ANOVA/Tukey or Kruskal–Wallis/Dunn with CLD)—without requiring any R programming knowledge.
+RootTracker is a Shiny application designed to analyze root growth dose–response data. This tool lets you import CSV files, map inhibitor concentrations to numeric values, normalize growth to controls, visualize results (dose–effect curves, violin and bar plots), and run per-plot statistical tests (ANOVA/Tukey or Kruskal–Wallis/Dunn with CLD)—without requiring any R programming knowledge.
 
 ------
 
