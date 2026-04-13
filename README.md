@@ -1,5 +1,5 @@
 <h1>
-  <img src="www/logo_RT.png" alt="RootTracker logo" width="54" />
+  <img src="www/logo_RT.png" alt="RootTracker logo" width="62" />
   RootTracker
 </h1>
 
