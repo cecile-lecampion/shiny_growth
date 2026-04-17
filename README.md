@@ -252,7 +252,7 @@ Topics covered in Help.md:
   ```
   Then restart the app.
 
-**Problem**: Application is very slow on first launch
+  **Problem**: Application is very slow on first launch
 - **Solution**: The app is installing packages in the background. This is normal and may take 5–10 minutes on first run. Subsequent launches will be much faster.
 
 ### Data Loading Issues
